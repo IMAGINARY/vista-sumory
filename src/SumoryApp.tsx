@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SumoryGame from "./SumoryGame";
 import { generateValues } from "./helpers/sumory-random";
 import { shuffle } from "./helpers/aux";
 import classnames from "classnames";
 import "./styles/app.scss";
-import tamagotchi from "./assets/img/neutral-tamagotchi_transparent.gif";
+import Creature from "./Creature";
 
 // FIXME get language list from i18n
 const langs = ["en", "de"];
@@ -45,15 +45,6 @@ export default function SumoryApp(props: Props) {
       strings.instructions.replace("%turns", "" + TURNS)) ||
     "";
 
-  useEffect(
-    () => {
-      // IMAGINARY.i18n.setLang(language).then(() => {
-      //   setStrings(IMAGINARY.i18n.getStrings());
-      // });
-    },
-    [] /* Run on first render only */
-  );
-
   function handleLanguageChange() {
     const index = langs.indexOf(language);
     const code = langs[(index + 1) % langs.length];
@@ -75,7 +66,6 @@ export default function SumoryApp(props: Props) {
   }
 
   function restart() {
-    // clearTimeout(analysisTimer.current);
     setResettingGame(true);
     setTimeout(() => {
       setGameNumber(gameNumber + 1);
@@ -92,7 +82,6 @@ export default function SumoryApp(props: Props) {
     }
   }
 
-  // noinspection JSAnnotator
   return (
     <div
       className={classnames("sumory-app", {
@@ -124,7 +113,7 @@ export default function SumoryApp(props: Props) {
               <div className="label">{strings.sum}</div>
               <div className="value">{gameStatus.score}</div>
             </div>
-            <img src={tamagotchi} />
+            <Creature mood="neutral" />
           </div>
         </div>
       </div>
