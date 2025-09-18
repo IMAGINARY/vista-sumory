@@ -1,0 +1,79 @@
+@use "./colors";
+
+.sumory-container,
+.sumory-app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sumory-app {
+  padding-inline: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 20vw;
+  grid-gap: 5vw;
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+  }
+}
+
+.instructions {
+  width: 80%;
+  font-size: 2.5em;
+}
+
+.util-menu {
+  width: 100%;
+  display: flex;
+  gap: 1vw;
+
+  button {
+    background-color: colors.$color-green;
+    border-radius: 9999px;
+    border: none;
+    padding: 1vh 1vw;
+  }
+}
+
+.status {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 20vw;
+  top: 3vh;
+  right: 0;
+
+  img {
+    width: 100%;
+  }
+}
+
+.status-box {
+  position: relative;
+  display: inline-block;
+
+  .value {
+    width: 100%;
+    height: 1.5em;
+    font-size: 3em;
+    line-height: 1.5;
+  }
+
+  .label {
+    width: 100%;
+    font-size: 3em;
+  }
+}

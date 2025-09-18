@@ -1,0 +1,145 @@
+@use "./colors.scss";
+
+$sumory-card-size: 11vmax;
+$sumory-card-spacing: 0.8vmax;
+
+$sumory-card-size-tall: 10vmax;
+$sumory-card-spacing-tall: 0.7vmax;
+
+$sumory-card-size-wide: 20vmin;
+$sumory-card-spacing-wide: 1.2vmin;
+
+.sumory-board {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2 * $sumory-card-spacing;
+
+  @media (max-aspect-ratio: 15/9) {
+    top: 28vmin;
+  }
+}
+
+.sumory-card {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  // width: $sumory-card-size;
+  // height: $sumory-card-size;
+  aspect-ratio: 1 / 1;
+  // margin: $sumory-card-spacing;
+  color: colors.$color-black;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  perspective: 50vw;
+
+  @media (max-aspect-ratio: 1/1) {
+    width: $sumory-card-size-tall;
+    height: $sumory-card-size-tall;
+    margin: $sumory-card-spacing-tall;
+  }
+
+  @media (min-aspect-ratio: 17/9) {
+    width: $sumory-card-size-wide;
+    height: $sumory-card-size-wide;
+    margin: $sumory-card-spacing-wide;
+  }
+
+  .sumory-card-front,
+  .sumory-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in, background-color 0.5s 0.2s;
+    transform-style: preserve-3d;
+    border-radius: 2px;
+  }
+
+  .sumory-card-front {
+    color: colors.$color-green;
+    background-color: transparent;
+    border: 0.25vw solid colors.$color-green;
+    transform: rotateY(-180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sumory-card-back {
+    background-color: transparent;
+    border: 0.25vw solid colors.$color-green;
+    transform: rotateY(0deg);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.visible {
+    .sumory-card-front {
+      transform: rotateY(0deg);
+      // background-color: colors.$color-white-dark;
+    }
+    .sumory-card-back {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &.selected {
+    .sumory-card-front {
+      color: colors.$color-white;
+      background-color: colors.$color-green;
+    }
+  }
+
+  .value,
+  .value-ghost {
+    // position: absolute;
+    font-size: $sumory-card-size * 0.375;
+    // line-height: $sumory-card-size * 0.9;
+    // text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @media (min-aspect-ratio: 17/9) {
+      font-size: $sumory-card-size-wide * 0.375;
+      line-height: $sumory-card-size-wide * 0.9;
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      font-size: $sumory-card-size-tall * 0.375;
+      line-height: $sumory-card-size-tall * 0.9;
+    }
+  }
+
+  .value-ghost {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  @keyframes vanish-up {
+    from {
+      top: 0;
+      opacity: 1;
+    }
+
+    to {
+      top: -50%;
+      opacity: 0;
+    }
+  }
+
+  .value-ghost {
+    animation: vanish-up 2s 0.5s ease-out forwards;
+  }
+
+  .value-ghost-imm {
+    animation: vanish-up 2s 0s ease-out forwards;
+  }
+}
