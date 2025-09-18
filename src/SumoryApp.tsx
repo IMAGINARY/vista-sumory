@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SumoryGame from "./SumoryGame";
 import { generateValues } from "./helpers/sumory-random";
 import { shuffle } from "./helpers/aux";
@@ -38,6 +38,8 @@ export default function SumoryApp(props: Props) {
   const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
   const [analysisVisible, setAnalysisVisible] = useState(false);
   const [resettingGame, setResettingGame] = useState(false);
+  const [creatureMood, setCreatureMood] = useState("neutral");
+  const moodTimeout = useRef(-1);
   // const analysisTimer = useRef(null);
 
   const instructions =
@@ -54,6 +56,14 @@ export default function SumoryApp(props: Props) {
 
   function handleGameUpdate(newSum: number, newTurnsLeft: number) {
     setGameStatus({ score: newSum, turnsLeft: newTurnsLeft });
+    // FIXME control gif playback
+    setCreatureMood("eating");
+    if (moodTimeout.current !== -1) {
+      clearTimeout(moodTimeout.current);
+    }
+    moodTimeout.current = setTimeout(() => {
+      setCreatureMood("neutral");
+    }, 1500);
   }
 
   function handleGameOver() {
@@ -113,7 +123,7 @@ export default function SumoryApp(props: Props) {
               <div className="label">{strings.sum}</div>
               <div className="value">{gameStatus.score}</div>
             </div>
-            <Creature mood="neutral" />
+            <Creature mood={creatureMood as any} />
           </div>
         </div>
       </div>
