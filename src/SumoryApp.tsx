@@ -4,7 +4,7 @@ import { generateValues } from "./helpers/sumory-random";
 import { shuffle } from "./helpers/aux";
 import classnames from "classnames";
 import "./styles/app.scss";
-import tamagotchi from "./assets/happy-tamagotchi_transparent.gif";
+import tamagotchi from "./assets/img/neutral-tamagotchi_transparent.gif";
 
 // FIXME get language list from i18n
 const langs = ["en", "de"];

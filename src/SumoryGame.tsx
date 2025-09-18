@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import "./styles/board.scss";
-import candy from "./assets/candy.png";
+import candy from "./assets/img/candy.png";
 
 interface Props {
   values: number[];
