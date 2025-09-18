@@ -4,10 +4,8 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-}
 
-.sumory-app {
-  padding-inline: 5vh;
+  padding-inline: 6rem;
   display: flex;
   flex-direction: column;
   gap: 2.5vh;
@@ -17,7 +15,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 20vw;
+  grid-template-columns: 1fr 15rem;
   grid-gap: 5vw;
 
   main {
@@ -51,7 +49,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  width: 20vw;
+  // width: 20vw;
   top: 3vh;
   right: 0;
 
