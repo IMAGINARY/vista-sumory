@@ -1,5 +1,5 @@
 {
-  "instructions": "Flip cards to reveal numbers. You have %turns turns to reach the highest possible sum. You can select an already flipped card as many times as you want.",
+  "instructions": "The aim of the game is to score the most points. Turn over the cards. You can select cards multiple times.",
   "draws": "turns left",
   "sum": "total",
   "restart": "Restart",

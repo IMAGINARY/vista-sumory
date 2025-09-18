@@ -1,5 +1,5 @@
 {
-  "instructions": "Ziel des Spiels ist es, eine möglichst hohe Summe zu erreichen. Decke die Zahlenkarten auf. Du hast %turns Spielzüge. Du darfst Karten mehrfach auswählen.",
+  "instructions": "Ziel des Spiels ist es, die meisten Punkte zu erzielen. Decke die Karten mit den Snacks auf. Du darfst Karten mehrfach auswählen.",
   "draws": "Spielzüge übrig",
   "sum": "Summe",
   "restart": "Neustart",
