@@ -129,7 +129,7 @@ export default function SumoryApp(props: Props) {
       </div>
       <div className="util-menu">
         <button type="button" className="restart" onClick={handleRestartButton}>
-          <span className="fas fa-redo-alt fa-lg" />
+          <img src="arrow.svg" />
         </button>
         <button type="button" onClick={handleLanguageChange}>
           {language.toUpperCase()}
