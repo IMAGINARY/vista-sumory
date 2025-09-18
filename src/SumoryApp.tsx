@@ -4,6 +4,7 @@ import { generateValues } from "./helpers/sumory-random";
 import { shuffle } from "./helpers/aux";
 import classnames from "classnames";
 import "./styles/app.scss";
+import tamagotchi from "./assets/happy-tamagotchi_transparent.gif";
 
 // FIXME get language list from i18n
 const langs = ["en", "de"];
@@ -123,7 +124,7 @@ export default function SumoryApp(props: Props) {
               <div className="label">{strings.sum}</div>
               <div className="value">{gameStatus.score}</div>
             </div>
-            <img src="/assets/img/happy-tamagotchi_transparent.gif" />
+            <img src={tamagotchi} />
           </div>
         </div>
       </div>
