@@ -10,7 +10,7 @@ const langs = ["en", "de"];
 
 interface Config {
   cardValues?: number[];
-  languages?: Record<string, string>;
+  languages: { [lang: string]: Record<string, string> };
   defaultLanguage?: string;
 }
 
@@ -29,7 +29,9 @@ export default function SumoryApp(props: Props) {
       : generateValues(CARD_COUNT);
 
   const [language, setLanguage] = useState(config.defaultLanguage || "en");
-  const [strings, setStrings] = useState<Record<string, string>>({});
+  const [strings, setStrings] = useState<Record<string, string>>(
+    config.languages[language]
+  );
   const [cardValues, setCardValues] = useState(resetCardValues());
   const [gameNumber, setGameNumber] = useState(1);
   const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
@@ -55,9 +57,7 @@ export default function SumoryApp(props: Props) {
     const index = langs.indexOf(language);
     const code = langs[(index + 1) % langs.length];
     setLanguage(code);
-    // IMAGINARY.i18n.setLang(code).then(() => {
-    //   setStrings(IMAGINARY.i18n.getStrings());
-    // });
+    setStrings(config.languages[code]);
   }
 
   function handleGameUpdate(newSum: number, newTurnsLeft: number) {

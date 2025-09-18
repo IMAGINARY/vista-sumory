@@ -1,0 +1,16 @@
+{
+  "instructions": "Flip cards to reveal numbers. You have %turns turns to reach the highest possible sum. You can select an already flipped card as many times as you want.",
+  "draws": "turns left",
+  "sum": "total",
+  "restart": "Restart",
+  "final_result": "Final result:",
+  "result_better": "This is %percentage% <em>better</em> than the average best strategy.",
+  "result_worse": "This is %percentage% <em>worse</em> than the average best strategy.",
+  "explanation_1": "To win at this game, it's very likely you adopted a strategy with two phases:",
+  "explanation_2": "<strong>Explore: </strong> Flip cards trying to find a high value.",
+  "explanation_3": "<strong>Exploit: </strong> Repeatedly pick the highest value found to maximize the score.",
+  "explanation_4": "Many AI systems learn to perform tasks by using strategies with these two phases. They alternate between taking the best-known course of action while at the same time exploring new options that could bring better results.",
+  "analysis_chart_y_label": "Average sum",
+  "analysis_chart_x_label": "Number of turns of exploration",
+  "play_again": "Play again"
+}
