@@ -86,7 +86,6 @@ $sumory-card-spacing-wide: 1.2vmin;
   &.visible {
     .sumory-card-front {
       transform: rotateY(0deg);
-      // background-color: colors.$color-white-dark;
     }
     .sumory-card-back {
       transform: rotateY(180deg);
@@ -95,7 +94,7 @@ $sumory-card-spacing-wide: 1.2vmin;
 
   &.selected {
     .sumory-card-front {
-      fill: colors.$color-white;
+      fill: colors.$color-black;
       background-color: colors.$color-green;
     }
   }

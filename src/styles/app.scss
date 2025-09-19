@@ -50,7 +50,7 @@ $ending-width: 36rem;
 .game-container {
   display: grid;
   grid-template-columns: 1fr 0rem;
-  min-height: 50vh;
+  min-height: 60vh;
   align-items: center;
   transition: grid-template-columns 1000ms;
 }
@@ -103,7 +103,7 @@ $ending-width: 36rem;
     height: 6rem;
     background-color: colors.$color-green;
     border: none;
-    color: colors.$color-white;
+    color: colors.$color-black;
   }
 }
 
