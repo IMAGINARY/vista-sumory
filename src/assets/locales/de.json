@@ -13,5 +13,7 @@
   "analysis_chart_y_label": "Durchschnittssumme",
   "analysis_chart_x_label": "Anzahl der Erkundungsversuche",
   "play_again": "Nochmal spielen",
-  "learn_more": "Finde heraus welche Strategien es gibt."
+  "learn_more": "Finde heraus welche Strategien es gibt.",
+  "info_screen_1": "<p><strong>Was ist deine Strategie?</strong></p><p>Um dieses Spiel zu gewinnen, wirst du wahrscheinlich eine Strategie wählen, die aus zwei Phasen besteht:</p><p><strong>Erkunden / Explore</strong>: Zuerst drehst du mehrere Karten um, um eine möglichst große Zahl zu finden.</p><p><strong>Nützen / Exploit</strong>: Dann wählst du die Karte mit der größten Zahl so oft wie noch möglich aus.</p><p>Wie viele Karten deckst du auf, um ein möglichst hohes Ergebnis zu erhalten?</p>",
+  "info_next": "Was hat das mit KI zu tun?"
 }

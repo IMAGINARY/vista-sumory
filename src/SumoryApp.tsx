@@ -6,6 +6,7 @@ import classnames from "classnames";
 import "./styles/app.scss";
 import Creature from "./Creature";
 import { calculateStrategiesDeterministically } from "./helpers/sumory-strategy";
+import InfoModal from "./InfoModal";
 
 // FIXME get language list from i18n
 const langs = ["en", "de"];
@@ -40,8 +41,8 @@ export default function SumoryApp(props: Props) {
   const [resettingGame, setResettingGame] = useState(false);
   const [creatureMood, setCreatureMood] = useState("neutral");
   const [gameEnded, setGameEnded] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const moodTimeout = useRef(-1);
-  // const analysisTimer = useRef(null);
 
   const strategy = useMemo(
     () => calculateStrategiesDeterministically(cardValues, TURNS),
@@ -75,12 +76,6 @@ export default function SumoryApp(props: Props) {
 
   function handleGameOver() {
     setGameEnded(true);
-    //   setTimeout(() => {
-    //     setAnalysisVisible(true);
-    //     analysisTimer.current = setTimeout(() => {
-    //       restart();
-    //     }, (config.analysisTimeout || 60) * 1000);
-    //   }, 1000);
   }
 
   function restart() {
@@ -122,6 +117,7 @@ export default function SumoryApp(props: Props) {
               userScore={gameStatus.score}
               best={best}
               onPlayAgain={handleRestart}
+              onLearnMore={() => setModalOpen(true)}
             />
           </div>
         </main>
@@ -147,6 +143,11 @@ export default function SumoryApp(props: Props) {
           {language.toUpperCase()}
         </button>
       </div>
+      <InfoModal
+        strings={strings}
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }
