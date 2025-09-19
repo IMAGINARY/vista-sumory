@@ -45,7 +45,7 @@
   }
 }
 
-$ending-width: 36rem;
+$ending-width: 25vw;
 
 .game-container {
   display: grid;
@@ -62,7 +62,7 @@ $ending-width: 36rem;
 .ending {
   $padding: 2rem;
   height: 100%;
-  width: $ending-width - $padding;
+  width: calc($ending-width - $padding);
   margin-left: $padding;
   padding-left: $padding;
   border-left: 2px solid colors.$color-green;
