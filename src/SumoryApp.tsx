@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import SumoryGame from "./SumoryGame";
 import { generateValues } from "./helpers/sumory-random";
 import { shuffle } from "./helpers/aux";
 import classnames from "classnames";
 import "./styles/app.scss";
 import Creature from "./Creature";
+import { calculateStrategiesDeterministically } from "./helpers/sumory-strategy";
 
 // FIXME get language list from i18n
 const langs = ["en", "de"];
@@ -41,6 +42,12 @@ export default function SumoryApp(props: Props) {
   const [creatureMood, setCreatureMood] = useState("neutral");
   const moodTimeout = useRef(-1);
   // const analysisTimer = useRef(null);
+
+  const strategy = useMemo(
+    () => calculateStrategiesDeterministically(cardValues, TURNS),
+    [cardValues, TURNS]
+  );
+  const best = Math.max(...strategy);
 
   const instructions =
     (strings.instructions &&
@@ -103,15 +110,22 @@ export default function SumoryApp(props: Props) {
           <div className="header">
             <div className="instructions">{instructions}</div>
           </div>
-          <SumoryGame
-            key={gameNumber}
-            values={cardValues}
-            turns={TURNS}
-            resetting={resettingGame}
-            onUpdate={handleGameUpdate}
-            onGameOver={handleGameOver}
-            config={config}
-          />
+          <div className="game-container">
+            <SumoryGame
+              key={gameNumber}
+              values={cardValues}
+              turns={TURNS}
+              resetting={resettingGame}
+              onUpdate={handleGameUpdate}
+              onGameOver={handleGameOver}
+              config={config}
+            />
+            {/* <EndScreen
+              strings={strings}
+              userScore={gameStatus.score}
+              best={best}
+            /> */}
+          </div>
         </main>
         <div className="sidebar">
           <div className="status">
@@ -134,6 +148,44 @@ export default function SumoryApp(props: Props) {
         <button type="button" onClick={handleLanguageChange}>
           {language.toUpperCase()}
         </button>
+      </div>
+    </div>
+  );
+}
+
+interface EndScreenProps {
+  strings: any;
+  userScore: number;
+  best: number;
+}
+
+function EndScreen({ strings, userScore, best }: EndScreenProps) {
+  return (
+    <div className="ending">
+      <div>
+        {strings.final_result} {userScore}
+        <span
+          dangerouslySetInnerHTML={{
+            __html:
+              userScore > best
+                ? `${
+                    (strings.result_better &&
+                      strings.result_better.replace(
+                        "%percentage",
+                        ((userScore / best) * 100 - 100).toFixed(1)
+                      )) ||
+                    ""
+                  }`
+                : `${
+                    (strings.result_worse &&
+                      strings.result_worse.replace(
+                        "%percentage",
+                        ((userScore / best) * -100 + 100).toFixed(1)
+                      )) ||
+                    ""
+                  }`,
+          }}
+        />
       </div>
     </div>
   );

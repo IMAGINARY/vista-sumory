@@ -44,6 +44,12 @@
   }
 }
 
+.game-container {
+  display: grid;
+  // grid-template-columns: 1fr 12rem;
+  gap: 2rem;
+}
+
 .status {
   height: 100%;
   display: flex;
