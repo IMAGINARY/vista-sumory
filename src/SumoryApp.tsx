@@ -37,9 +37,9 @@ export default function SumoryApp(props: Props) {
   const [cardValues, setCardValues] = useState(resetCardValues());
   const [gameNumber, setGameNumber] = useState(1);
   const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
-  const [analysisVisible, setAnalysisVisible] = useState(false);
   const [resettingGame, setResettingGame] = useState(false);
   const [creatureMood, setCreatureMood] = useState("neutral");
+  const [gameEnded, setGameEnded] = useState(false);
   const moodTimeout = useRef(-1);
   // const analysisTimer = useRef(null);
 
@@ -74,6 +74,7 @@ export default function SumoryApp(props: Props) {
   }
 
   function handleGameOver() {
+    setGameEnded(true);
     //   setTimeout(() => {
     //     setAnalysisVisible(true);
     //     analysisTimer.current = setTimeout(() => {
@@ -88,7 +89,7 @@ export default function SumoryApp(props: Props) {
       setGameNumber(gameNumber + 1);
       setGameStatus({ score: 0, turnsLeft: TURNS });
       setCardValues(resetCardValues());
-      setAnalysisVisible(false);
+      setGameEnded(false);
       setResettingGame(false);
     }, 1000);
   }
@@ -100,11 +101,7 @@ export default function SumoryApp(props: Props) {
   }
 
   return (
-    <div
-      className={classnames("sumory-app", {
-        "sumory-app-with-analysis": analysisVisible,
-      })}
-    >
+    <div className={classnames("sumory-app", { "game-ended": gameEnded })}>
       <div className="content">
         <main>
           <div className="header">
@@ -120,11 +117,11 @@ export default function SumoryApp(props: Props) {
               onGameOver={handleGameOver}
               config={config}
             />
-            {/* <EndScreen
+            <EndScreen
               strings={strings}
               userScore={gameStatus.score}
               best={best}
-            /> */}
+            />
           </div>
         </main>
         <div className="sidebar">
@@ -162,30 +159,39 @@ interface EndScreenProps {
 function EndScreen({ strings, userScore, best }: EndScreenProps) {
   return (
     <div className="ending">
-      <div>
-        {strings.final_result} {userScore}
-        <span
-          dangerouslySetInnerHTML={{
-            __html:
-              userScore > best
-                ? `${
-                    (strings.result_better &&
-                      strings.result_better.replace(
-                        "%percentage",
-                        ((userScore / best) * 100 - 100).toFixed(1)
-                      )) ||
-                    ""
-                  }`
-                : `${
-                    (strings.result_worse &&
-                      strings.result_worse.replace(
-                        "%percentage",
-                        ((userScore / best) * -100 + 100).toFixed(1)
-                      )) ||
-                    ""
-                  }`,
-          }}
-        />
+      <div className="result">
+        <div>
+          <div>
+            {strings.final_result} {userScore}
+          </div>
+          <span
+            dangerouslySetInnerHTML={{
+              __html:
+                userScore > best
+                  ? `${
+                      (strings.result_better &&
+                        strings.result_better.replace(
+                          "%percentage",
+                          ((userScore / best) * 100 - 100).toFixed(1)
+                        )) ||
+                      ""
+                    }`
+                  : `${
+                      (strings.result_worse &&
+                        strings.result_worse.replace(
+                          "%percentage",
+                          ((userScore / best) * -100 + 100).toFixed(1)
+                        )) ||
+                      ""
+                    }`,
+            }}
+          />
+        </div>
+        <Creature mood={userScore > best ? "happy" : "sad"} />
+      </div>
+      <div className="buttons">
+        <button>{strings.play_again}</button>
+        <button>{strings.learn_more}</button>
       </div>
     </div>
   );

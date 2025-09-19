@@ -1,5 +1,5 @@
 import happy from "./assets/img/happy-tamagotchi_transparent.gif";
-import sad from "./assets/img/eating-tamagotchi_transparent.gif";
+import sad from "./assets/img/sad-tamagotchi_transparent.gif";
 import eating from "./assets/img/eating-tamagotchi_transparent.gif";
 import neutral from "./assets/img/neutral-tamagotchi_transparent.gif";
 

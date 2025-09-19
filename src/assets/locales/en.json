@@ -12,5 +12,6 @@
   "explanation_4": "Many AI systems learn to perform tasks by using strategies with these two phases. They alternate between taking the best-known course of action while at the same time exploring new options that could bring better results.",
   "analysis_chart_y_label": "Average sum",
   "analysis_chart_x_label": "Number of turns of exploration",
-  "play_again": "Play again"
+  "play_again": "Play again",
+  "learn_more": "Find out which strategies exist."
 }
