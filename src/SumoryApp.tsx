@@ -94,7 +94,7 @@ export default function SumoryApp(props: Props) {
     }, 1000);
   }
 
-  function handleRestartButton() {
+  function handleRestart() {
     if (!resettingGame) {
       restart();
     }
@@ -121,6 +121,7 @@ export default function SumoryApp(props: Props) {
               strings={strings}
               userScore={gameStatus.score}
               best={best}
+              onPlayAgain={handleRestart}
             />
           </div>
         </main>
@@ -139,7 +140,7 @@ export default function SumoryApp(props: Props) {
         </div>
       </div>
       <div className="util-menu">
-        <button type="button" className="restart" onClick={handleRestartButton}>
+        <button type="button" className="restart" onClick={handleRestart}>
           <img src="arrow.svg" />
         </button>
         <button type="button" onClick={handleLanguageChange}>
@@ -154,9 +155,17 @@ interface EndScreenProps {
   strings: any;
   userScore: number;
   best: number;
+  onPlayAgain?: () => void;
+  onLearnMore?: () => void;
 }
 
-function EndScreen({ strings, userScore, best }: EndScreenProps) {
+function EndScreen({
+  strings,
+  userScore,
+  best,
+  onPlayAgain,
+  onLearnMore,
+}: EndScreenProps) {
   return (
     <div className="ending">
       <div className="result">
@@ -190,8 +199,8 @@ function EndScreen({ strings, userScore, best }: EndScreenProps) {
         <Creature mood={userScore > best ? "happy" : "sad"} />
       </div>
       <div className="buttons">
-        <button>{strings.play_again}</button>
-        <button>{strings.learn_more}</button>
+        <button onClick={onPlayAgain}>{strings.play_again}</button>
+        <button onClick={onLearnMore}>{strings.learn_more}</button>
       </div>
     </div>
   );
