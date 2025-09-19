@@ -1,7 +1,7 @@
 @use "./colors.scss";
 
 $sumory-card-size: 11vmax;
-$sumory-card-spacing: 0.8vmax;
+$sumory-card-spacing: 1.5rem;
 
 $sumory-card-size-tall: 10vmax;
 $sumory-card-spacing-tall: 0.7vmax;
@@ -13,11 +13,7 @@ $sumory-card-spacing-wide: 1.2vmin;
   text-align: center;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2 * $sumory-card-spacing;
-
-  @media (max-aspect-ratio: 15/9) {
-    top: 28vmin;
-  }
+  gap: $sumory-card-spacing;
 }
 
 .sumory-card {
@@ -66,7 +62,7 @@ $sumory-card-spacing-wide: 1.2vmin;
     height: 100%;
     fill: colors.$color-green;
     background-color: transparent;
-    border: 0.25vw solid colors.$color-green;
+    border: 2px solid colors.$color-green;
     transform: rotateY(-180deg);
     display: flex;
     align-items: center;
@@ -75,7 +71,7 @@ $sumory-card-spacing-wide: 1.2vmin;
 
   .sumory-card-back {
     background-color: transparent;
-    border: 0.25vw solid colors.$color-green;
+    border: 2px solid colors.$color-green;
     transform: rotateY(0deg);
 
     img {
