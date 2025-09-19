@@ -1,23 +1,39 @@
 @use "./colors";
 
-.modal-backdrop {
+$anim-duration: 500ms;
+
+.modal-container {
+  position: fixed;
+}
+
+.modal-container:before {
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-}
-
-[data-open="true"] .modal-backdrop {
-  pointer-events: initial;
+  opacity: 0;
+  transition: opacity $anim-duration;
   backdrop-filter: blur(2px);
 }
 
-dialog:not(:open) {
-  display: none;
+.modal-container[data-open="true"]:before {
+  pointer-events: initial;
+  opacity: 1;
+}
+
+[data-open="true"] dialog {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 dialog {
   width: 80vw;
   height: 80vh;
+
+  // Animated properties
+  transition: transform $anim-duration, opacity $anim-duration;
+  opacity: 0;
+  transform: translateY(100vh);
 
   background-color: colors.$color-black;
   border: 3px solid colors.$color-green;

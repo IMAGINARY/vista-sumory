@@ -12,22 +12,26 @@ export default function InfoModal({ strings, open, onClose }: Props) {
 
   useEffect(() => {
     if (open) {
-      console.log(open);
       modalRef.current?.showModal();
     } else {
-      modalRef.current?.close();
+      setTimeout(() => {
+        setScreen2(false);
+        modalRef.current?.close();
+      }, 500);
     }
   }, [open]);
 
   return (
     <div className="modal-container" data-open={open}>
-      <div onClick={() => onClose()} className="modal-backdrop"></div>
       <dialog ref={modalRef}>
         {screen2 ? (
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: strings.info_screen_2 }}
-          />
+          <>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{ __html: strings.info_screen_2 }}
+            />
+            <button onClick={() => onClose()}>Close</button>
+          </>
         ) : (
           <>
             <div
