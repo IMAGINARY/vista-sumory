@@ -24,6 +24,8 @@ $sumory-card-spacing-wide: 1.2vmin;
   position: relative;
   display: inline-block;
   vertical-align: top;
+  width: 100%;
+  height: 100%;
   // width: $sumory-card-size;
   // height: $sumory-card-size;
   aspect-ratio: 1 / 1;
@@ -60,7 +62,9 @@ $sumory-card-spacing-wide: 1.2vmin;
   }
 
   .sumory-card-front {
-    color: colors.$color-green;
+    width: 100%;
+    height: 100%;
+    fill: colors.$color-green;
     background-color: transparent;
     border: 0.25vw solid colors.$color-green;
     transform: rotateY(-180deg);
@@ -91,31 +95,15 @@ $sumory-card-spacing-wide: 1.2vmin;
 
   &.selected {
     .sumory-card-front {
-      color: colors.$color-white;
+      fill: colors.$color-white;
       background-color: colors.$color-green;
     }
   }
 
   .value,
   .value-ghost {
-    // position: absolute;
-    font-size: $sumory-card-size * 0.375;
-    // line-height: $sumory-card-size * 0.9;
-    // text-align: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    @media (min-aspect-ratio: 17/9) {
-      font-size: $sumory-card-size-wide * 0.375;
-      line-height: $sumory-card-size-wide * 0.9;
-    }
-
-    @media (max-aspect-ratio: 1/1) {
-      font-size: $sumory-card-size-tall * 0.375;
-      line-height: $sumory-card-size-tall * 0.9;
-    }
+    text-anchor: middle;
+    dominant-baseline: central;
   }
 
   .value-ghost {
@@ -125,12 +113,12 @@ $sumory-card-spacing-wide: 1.2vmin;
 
   @keyframes vanish-up {
     from {
-      top: 0;
+      transform: translateY(0);
       opacity: 1;
     }
 
     to {
-      top: -50%;
+      transform: translateY(-50%);
       opacity: 0;
     }
   }

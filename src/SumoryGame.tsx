@@ -99,20 +99,20 @@ export default function SumoryGame(props: Props) {
                 cardElements.current[i] = el;
               }}
             >
-              <div className="sumory-card-front">
-                <span className="value">{text}</span>
+              <svg className="sumory-card-front" viewBox="-25 -25 50 50">
+                <text className="value">{text}</text>
                 {/* eslint-disable-next-line react/no-array-index-key */}
                 {times(timesSelected).map((_, j) => (
-                  <span
+                  <text
                     className={classnames("value-ghost", {
                       "value-ghost-imm": timesSelected > 1,
                     })}
                     key={j}
                   >
                     {text}
-                  </span>
+                  </text>
                 ))}
-              </div>
+              </svg>
               <div className="sumory-card-back">
                 <img src={candy} />
               </div>
