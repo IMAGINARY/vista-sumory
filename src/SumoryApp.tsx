@@ -85,11 +85,11 @@ export default function SumoryApp(props: Props) {
 
   function restart() {
     setResettingGame(true);
+    setGameEnded(false);
     setTimeout(() => {
       setGameNumber(gameNumber + 1);
       setGameStatus({ score: 0, turnsLeft: TURNS });
       setCardValues(resetCardValues());
-      setGameEnded(false);
       setResettingGame(false);
     }, 1000);
   }
