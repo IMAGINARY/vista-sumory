@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "APK Monogami";
+  src: local("APK Monogami");
+}
+
 html,
 body {
   width: 100%;
@@ -13,7 +18,7 @@ body {
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
+  font-family: "APK Monogami", sans-serif;
   font-size: 1.4vmin;
   line-height: 1.2;
   background-color: colors.$color-black;
@@ -22,13 +27,14 @@ body {
 }
 
 h1 {
-  font-family: gap_sansregular, sans-serif;
+  font-family: "APK Monogami", sans-serif;
   font-size: 5em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 button {
+  font-family: "APK Monogami", sans-serif;
   font-size: 1.5em;
 }
 

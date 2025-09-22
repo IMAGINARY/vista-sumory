@@ -28,7 +28,7 @@
 
 .instructions {
   width: 80%;
-  font-size: 2.5em;
+  font-size: 1.5rem;
 }
 
 .util-menu {
@@ -37,6 +37,7 @@
   gap: 1vw;
 
   button {
+    display: flex;
     font-size: 2.5rem;
     background-color: colors.$color-green;
     border-radius: 9999px;
@@ -49,7 +50,7 @@
   }
 }
 
-$ending-width: 25vw;
+$ending-width: 33vw;
 
 .game-container {
   display: grid;
@@ -99,7 +100,7 @@ $ending-width: 25vw;
 
   .buttons {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .buttons button {
@@ -108,6 +109,7 @@ $ending-width: 25vw;
     background-color: colors.$color-green;
     border: none;
     color: colors.$color-black;
+    padding-inline: 1rem;
   }
 }
 
