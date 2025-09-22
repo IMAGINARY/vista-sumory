@@ -35,7 +35,7 @@ export default function SumoryGame(props: Props) {
           clearInterval(intervalId);
           triggerGameOver();
         }
-      }, config.cardRevealDelay || 250);
+      }, config.cardRevealDelay || 150);
     } else {
       revealedCounter.current = 0;
     }
