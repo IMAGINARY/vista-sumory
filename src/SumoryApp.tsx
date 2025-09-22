@@ -117,6 +117,7 @@ export default function SumoryApp(props: Props) {
               config={config}
             />
             <EndScreen
+              lang={language}
               strings={strings}
               userScore={gameStatus.score}
               best={best}
@@ -157,6 +158,7 @@ export default function SumoryApp(props: Props) {
 }
 
 interface EndScreenProps {
+  lang: string;
   strings: any;
   userScore: number;
   best: number;
@@ -165,12 +167,19 @@ interface EndScreenProps {
 }
 
 function EndScreen({
+  lang,
   strings,
   userScore,
   best,
   onPlayAgain,
   onLearnMore,
 }: EndScreenProps) {
+  const goodScore = userScore > best;
+  const formatted = new Intl.NumberFormat(lang, {
+    style: "percent",
+    maximumFractionDigits: 1,
+  }).format(goodScore ? userScore / best - 1 : userScore / best + 1);
+  ("12.5%");
   return (
     <div className="ending">
       <div className="result">
@@ -180,24 +189,15 @@ function EndScreen({
           </div>
           <span
             dangerouslySetInnerHTML={{
-              __html:
-                userScore > best
-                  ? `${
-                      (strings.result_better &&
-                        strings.result_better.replace(
-                          "%percentage",
-                          ((userScore / best) * 100 - 100).toFixed(1)
-                        )) ||
-                      ""
-                    }`
-                  : `${
-                      (strings.result_worse &&
-                        strings.result_worse.replace(
-                          "%percentage",
-                          ((userScore / best) * -100 + 100).toFixed(1)
-                        )) ||
-                      ""
-                    }`,
+              __html: goodScore
+                ? `${
+                    strings.result_better?.replace("%percentage", formatted) ||
+                    ""
+                  }`
+                : `${
+                    strings.result_worse?.replace("%percentage", formatted) ||
+                    ""
+                  }`,
             }}
           />
         </div>
