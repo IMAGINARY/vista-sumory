@@ -1,19 +1,12 @@
 @use "./colors.scss";
 
 $sumory-card-size: 11vmax;
-$sumory-card-spacing: 1.5rem;
-
-$sumory-card-size-tall: 10vmax;
-$sumory-card-spacing-tall: 0.7vmax;
-
-$sumory-card-size-wide: 20vmin;
-$sumory-card-spacing-wide: 1.2vmin;
 
 .sumory-board {
   text-align: center;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: $sumory-card-spacing;
+  gap: 1.5rem;
 }
 
 .sumory-card {
