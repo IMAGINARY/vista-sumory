@@ -2,15 +2,17 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/base.scss";
 import SumoryApp from "./SumoryApp.tsx";
-import en from "./assets/locales/en.json";
-import de from "./assets/locales/de.json";
 
-const config = {
-  languages: { en, de },
-};
+const strings: Record<string, any> = {};
+for (const code of ["en", "de"]) {
+  const response = await fetch(`/locales/${code}.json`, {
+    cache: "no-cache",
+  });
+  strings[code] = await response.json();
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <SumoryApp config={config} />
+    <SumoryApp config={{ languages: strings }} />
   </StrictMode>
 );
