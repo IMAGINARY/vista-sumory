@@ -55,9 +55,13 @@ export default function SumoryApp(props: Props) {
       strings.instructions.replace("%turns", "" + TURNS)) ||
     "";
 
-  function handleLanguageChange() {
+  const nextLanguage = (language: string) => {
     const index = langs.indexOf(language);
-    const code = langs[(index + 1) % langs.length];
+    return langs[(index + 1) % langs.length];
+  };
+
+  function handleLanguageChange() {
+    const code = nextLanguage(language);
     setLanguage(code);
     setStrings(config.languages[code]);
   }
@@ -140,7 +144,7 @@ export default function SumoryApp(props: Props) {
           <img src="arrow.svg" />
         </button>
         <button type="button" onClick={handleLanguageChange}>
-          {language.toUpperCase()}
+          {nextLanguage(language).toUpperCase()}
         </button>
       </div>
       <InfoModal
