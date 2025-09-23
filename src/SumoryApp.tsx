@@ -8,8 +8,7 @@ import Creature from "./Creature";
 import { calculateStrategiesDeterministically } from "./helpers/sumory-strategy";
 import InfoModal from "./InfoModal";
 
-// FIXME get language list from i18n
-const langs = ["en", "de"];
+const langs = ["de", "en"];
 
 interface Config {
   cardValues?: number[];
@@ -31,7 +30,7 @@ export default function SumoryApp(props: Props) {
       ? shuffle(config.cardValues)
       : generateValues(CARD_COUNT);
 
-  const [language, setLanguage] = useState(config.defaultLanguage || "en");
+  const [language, setLanguage] = useState(config.defaultLanguage || "de");
   const [strings, setStrings] = useState<Record<string, string>>(
     config.languages[language]
   );

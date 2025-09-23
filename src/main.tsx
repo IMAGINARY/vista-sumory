@@ -4,7 +4,7 @@ import "./styles/base.scss";
 import SumoryApp from "./SumoryApp.tsx";
 
 const strings: Record<string, any> = {};
-for (const code of ["en", "de"]) {
+for (const code of ["de", "en"]) {
   const response = await fetch(`/locales/${code}.json`, {
     cache: "no-cache",
   });
