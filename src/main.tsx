@@ -5,7 +5,7 @@ import SumoryApp from "./SumoryApp.tsx";
 
 const strings: Record<string, any> = {};
 for (const code of ["de", "en"]) {
-  const response = await fetch(`/locales/${code}.json`, {
+  const response = await fetch(`locales/${code}.json`, {
     cache: "no-cache",
   });
   strings[code] = await response.json();
