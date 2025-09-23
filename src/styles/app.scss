@@ -45,8 +45,15 @@
     padding: 0.5rem 2rem;
   }
 
+  button span {
+    // Fudge to make the text seem centered
+    padding-top: .5rem;
+  }
+
   img {
     height: 3rem;
+    // Fudge to make image text seem centered
+    padding-top: .5rem;
   }
 }
 

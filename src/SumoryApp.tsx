@@ -144,7 +144,7 @@ export default function SumoryApp(props: Props) {
           <img src="arrow.svg" />
         </button>
         <button type="button" onClick={handleLanguageChange}>
-          {nextLanguage(language).toUpperCase()}
+          <span>{nextLanguage(language).toUpperCase()}</span>
         </button>
       </div>
       <InfoModal
