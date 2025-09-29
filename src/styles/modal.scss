@@ -27,8 +27,8 @@ $anim-duration: 500ms;
 }
 
 dialog {
-  width: 80vw;
-  height: 80vh;
+  width: 90vw;
+  height: 90vh;
 
   // Animated properties
   transition: transform $anim-duration, opacity $anim-duration;
@@ -40,7 +40,7 @@ dialog {
   border-radius: 2px;
 
   color: colors.$color-white;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 
   display: flex;
   padding: 4rem;
